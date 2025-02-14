@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #fbe8e1; /* pastel pink sebagai latar belakang utama */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: #fff;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            transition: all 1s;
+            background: linear-gradient(135deg, #fbe8e1, #e1f7f1); /* pastel pink dan mint gradient */
+        }
+        .title {
+            font-size: 36px;
+            color: #ff87b2; /* pastel pink */
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 20px;
+            color: #3a3a3a;
+            margin-bottom: 30px;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px auto;
+            cursor: pointer;
+            border: 5px solid #ffb8d4; /* border pastel pink */
+        }
+        .footer {
+            font-size: 18px;
+            color: #666;
+        }
+        .footer a {
+            color: #ff87b2;
+            text-decoration: none;
+        }
+        .btn {
+            padding: 12px 25px;
+            background-color: #ffb8d4; /* pastel pink */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 25px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #ff87b2; /* hover pastel pink */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio Player -->
+    <audio autoplay loop>
+        <source src="cute.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container" id="cardContainer">
+        <div class="title" id="title">Happy Valentine Smul.tornstalle!!!</div>
+        <!-- Gambar Profile (Lingkaran) -->
+        <img src="Smul.jpeg" alt="Foto Profil" class="profile-img" onclick="changePage()">
+        <div class="message" id="message">maaf aneh bikin kaya gini ahahha</div>
+        <button class="btn" onclick="changePage()">Klik Aja klo anda berkenan</button>
+        <div class="footer">
+            <p>created by <br> PALELO </p>
+        </div>
+    </div>
+
+    <script>
+        let pageIndex = 0;
+        const pages = [
+            {
+                title: "Selamat Hari Valentine!",
+                message: "Semoga cinta dan kebahagiaan selalu menyertai kamu!",
+                profileColor: "#ff87b2", /* pastel pink */
+                backgroundColor: "#fbe8e1" /* pastel pink */
+            },
+            {
+                title: "Ada apa ya Di klik, w iseng aja bikin page ke 2 nya",
+                message: "maaf aneh",
+                profileColor: "#ffb8d4", /* pastel pink terang */
+                backgroundColor: "#fff2f8" /* pastel pink terang */
+            },
+            {
+                title: "kan w bilang gada apapa eheh, happy valentine pt2",
+                message: "semoga mood nya bagus terus yaa, sama ujianya beruntung. sama jangan marah juga sama w ahah",
+                profileColor: "#b2ebf2", /* pastel mint */
+                backgroundColor: "#e0f7fa" /* pastel mint muda */
+            }
+        ];
+
+        function changePage() {
+            pageIndex++;
+            if (pageIndex >= pages.length) {
+                pageIndex = pages.length - 1; // Tidak bisa lebih dari halaman terakhir
+            }
+            const page = pages[pageIndex];
+
+            document.getElementById('cardContainer').style.backgroundColor = page.backgroundColor;
+            document.getElementById('title').textContent = page.title;
+            document.getElementById('message').textContent = page.message;
+            document.querySelector('.profile-img').style.borderColor = page.profileColor;
+
+            // Disable button after it's clicked (can't go back)
+            if (pageIndex === pages.length - 1) {
+                document.querySelector('.btn').disabled = true;
+                document.querySelector('.btn').textContent = "Selesai!";
+            }
+        }
+    </script>
+
+</body>
+</html>
